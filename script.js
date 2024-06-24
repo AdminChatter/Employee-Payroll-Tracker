@@ -45,7 +45,7 @@ const displayAverageSalary = function(employeesArray) {
 
   //given salary with 2 decimal
   for (let i = 0; i < employeesArray.length; i++){
-    totalSalary += employeesArray[i].salary.toFixed(2)
+    totalSalary += parseFloat(employeesArray[i].salary)
   }
   averageSalaryWithDecimal = (totalSalary / employeesArray.length).toFixed(2)
   console.log(`The average employee salary between our ${employeesArray.length} employee(s) is $${averageSalaryWithDecimal}`)
