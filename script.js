@@ -30,15 +30,25 @@ const collectEmployees = function() {
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
   // TODO: Calculate and display the average salary
-  let totalSalary = 0, averageSalary = 0;
+  let totalSalary = 0, averageSalaryWithDecimal = 0, averageSalaryWithoutDecimal = 0;
 
+  //given salary without decimal
   for (let i = 0; i < employeesArray.length; i++){
     totalSalary += Math.round(employeesArray[i].salary)
   }
+  averageSalaryWithoutDecimal = (totalSalary / employeesArray.length).toFixed(2)
+  console.log(`The average employee salary between our ${employeesArray.length} employee(s) is $${averageSalaryWithoutDecimal}`)
 
-  averageSalary = (totalSalary / employeesArray.length).toFixed(2)
-  
-  console.log(`The average employee salary between our ${employeesArray.length} employee(s) is $${averageSalary}`)
+
+  //reset toal
+  totalSalary = 0
+
+  //given salary with 2 decimal
+  for (let i = 0; i < employeesArray.length; i++){
+    totalSalary += employeesArray[i].salary.toFixed(2)
+  }
+  averageSalaryWithDecimal = (totalSalary / employeesArray.length).toFixed(2)
+  console.log(`The average employee salary between our ${employeesArray.length} employee(s) is $${averageSalaryWithDecimal}`)
 }
 
 
