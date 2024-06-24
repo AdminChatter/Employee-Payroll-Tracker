@@ -1,20 +1,53 @@
+// GIVEN an employee payroll tracker
+// THEN my employee data is displayed on the page sorted alphabetically by last name, and the console shows computed and aggregated data
+
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
 // Collect employee data
 const collectEmployees = function() {
   // TODO: Get user input to create and return an array of employee objects
-  
+  let employee = [];
+  let continueAdd = true;
+
+  while(continueAdd){
+  let inputFirstName = window.prompt(`Enter the employee's first name: `)
+  let inputLastName = window.prompt(`Enter the employee's last name: `)
+  let inputSalary = Number(window.prompt(`Enter the employee's salary: `))
+
+  employee.push({
+    firstName: inputFirstName,
+    lastName: inputLastName,
+    salary: inputSalary
+  })
+
+  continueAdd = window.confirm(`Do you want to continue to add employees?`)
+  }
+
+  return employee
 }
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
   // TODO: Calculate and display the average salary
+  let totalSalary = 0, averageSalary = 0;
+
+  for (let i = 0; i < employeesArray.length; i++){
+    totalSalary += Math.round(employeesArray[i].salary)
+  }
+
+  averageSalary = (totalSalary / employeesArray.length).toFixed(2)
+  
+  console.log(`The average employee salary between our ${employeesArray.length} employee(s) is $${averageSalary}`)
 }
+
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
   // TODO: Select and display a random employee
+  let luckNumber = Math.floor(Math.random() * employeesArray.length)
+
+  console.log(`Congratulations to ${employeesArray[luckNumber].firstName} ${employeesArray[luckNumber].lastName}, our random drawing winner!`)
 }
 
 /*
